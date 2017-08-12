@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <_name>Newsprint filter</_name>
+  <id>Abhishek Sehgal_newsprint_filter</id>
+
+  <dependency type="executable" location="extensions">newsprint_filter.py</dependency>
+  <dependency type="executable" location="extensions">image_lib/common.py</dependency>
+  <dependency type="executable" location="extensions">image_lib/transform.py</dependency>
+  <dependency type="executable" location="extensions">inkex.py</dependency>
+  <dependency type="executable" location="extensions">cubicsuperpath.py</dependency>
+  <dependency type="executable" location="extensions">simpletransform.py</dependency>
+  <page name="halftoning" _gui-text="halftone filters">
+  </page>
+  <effect>
+    <menu-tip>to generate halftone of bitmap image.</menu-tip>
+    <object-type>all</object-type>
+    <effects-menu>
+      <submenu _name="Raster to Raster Halftone"/>
+    </effects-menu>
+  </effect>
+
+  <script>
+    <command reldir="extensions" interpreter="python">newsprint_filter.py</command>
+  </script>
+
+</inkscape-extension>
