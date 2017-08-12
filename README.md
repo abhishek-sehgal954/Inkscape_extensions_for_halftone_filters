@@ -1,6 +1,6 @@
 # Google/PSU Summer of Code 2017 project:
 
-# Inkscape_extensions_for_halftone_filters
+# Inkscape extensions for halftone filters
 
 Mentoring Organization: Portland State University
 
