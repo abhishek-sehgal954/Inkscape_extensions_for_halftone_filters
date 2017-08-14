@@ -1,54 +1,43 @@
-import numpy 
+import numpy
 from PIL import Image, ImageDraw, ImageStat
 import inkex
 import simplestyle
 import os
-import common
+from image_lib import common
 
 
-def error_dispersion(image):
-  arr = numpy.asarray(image)
-  height = len(arr)
-  width = len(arr[0])
-  err = [[0]*len(arr[0]) for i in range(len(arr))]
-  crr = numpy.zeros((len(arr),len(arr[0])))
-  for i in range(height):
-	for j in range(width):
-	  if(arr[i][j] + err[i][j] < 128):
-		crr[i][j] = 0 
-	  else:
-		crr[i][j] = 255
-	  diff = arr[i][j] + err[i][j] - crr[i][j]
-	  if(j+1 < width):
-		err[i][j+1] = float(float(err[i][j+1]) + float(diff*float(float(7)/float(16))))
-	  if(i+1 < height):
-		err[i+1][j] = float(float(err[i+1][j]) + float(diff*float(float(5)/float(16))))
-	  if(i+1 < height and j-1 >= 0):
-		err[i+1][j-1] = float(float(err[i+1][j-1]) + float(diff*float(float(3)/float(16))))
-	  if(i+1 < height and j+1 < width):
-		err[i+1][j+1] = float(float(err[i+1][j+1]) + float(diff*float(float(1)/float(16))))
-  return crr
-
-
+def error_dispersion(image_index, size):
+    for y in range(0, size[1]-1):
+    for x in range(1, size[0]-1):
+        neighbour_index = image_index[x, y]
+            if(neighbour_index>127) :
+                image_index[x,y] = 255
+                    else :
+                        image_index[x,y] = 0
+                            diffused_error = neighbour_index - image_index[x, y]
+                                image_index[x+1, y] = int(image_index[x+1, y] + 7/16.0 * diffused_error)
+                                    image_index[x-1, y+1] = int(image_index[x-1, y+1] + 3/16.0 * diffused_error)
+                                        image_index[x,y+1] = int(image_index[x,   y+1] + 5/16.0 * diffused_error)
+                                            image_index[x+1, y+1] =int(image_index[x+1, y+1] + 1/16.0 * diffused_error)
 
 class error_diffusion(inkex.Effect):
-	def __init__(self):
-		inkex.Effect.__init__(self)
-	def effect(self):
-		image_node = None
-		for node in self.selected.values():
-			if(common.is_image(node)):
-				image_node = node
-			if image_node is not None:
-				image = common.prep_image(image_node)
-				image = image.convert('L')
-				data = error_dispersion(image)
-				image = Image.fromarray(data)
-				image = image.convert('RGB')
-				common.save_image(image_node, image, img_format='PNG')
+    def __init__(self):
+        inkex.Effect.__init__(self)
+        def effect(self):
+            image_node = None
+                for node in self.selected.values():
+                    if(common.is_image(node)):
+                        image_node = node
+                        if image_node is not None:
+                            image = common.prep_image(image_node)
+                                image = image.convert('CMYK')
+                                image = image.split()
+                                for channel in image:
+                                    error_dispersion(channel.load(), channel.size)
+                                image = Image.merge("CMYK", image).convert("RGB")
+                                common.save_image(image_node, image, img_format='PNG')
 
 if __name__ == '__main__':
-	obj = error_diffusion()
-	obj.affect()
+    obj = error_diffusion()
+        obj.affect()
 
-			
