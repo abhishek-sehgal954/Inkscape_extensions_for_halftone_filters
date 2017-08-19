@@ -10,20 +10,24 @@ Student: Abhishek Sehgal
 
 This repository includes Inkscape extensions for some halftone filters.
 
-# Submenu: Raster to Raster halftone 
-
 How to run?
 
 1. Copy all the files under extension folder of inkscape. 
 2. Open Inkscape
 3. Open a raster image and select it.
-4. Under Extensions menu, find Raster to Raster submenu and select the desired algorithm.
+4. Under Extensions menu, find desired submenu and select the desired algorithm.
+
+# Submenu: Raster to Raster halftone 
 
 Currently four extensions are added under Raster to Raster Halftone
 1. Patterning
 2. Ordered dithering
 3. Error Diffusion
 4. Newsprint filter.
+
+# Submenu: Raster to vector(SVG) halftone
+
+1. Clustered dot
 
 More extensions will be added under submenu named Raster to SVG halftone and SVG to SVG halftone.
 
