@@ -211,8 +211,7 @@ class raster_to_svg_clustered_dot(inkex.Effect):
 
 
                 
-                #self.draw_circle((100,100),(100),'cyan',pixel2svg_group,'id')
-                #self.draw_ellipse((100,200),(100,200),'magenta',pixel2svg_group,'id')
+                
                 
 
                 
@@ -236,7 +235,7 @@ class raster_to_svg_clustered_dot(inkex.Effect):
                     self.clustered(node)
 
         if not found_image:
-            inkex.errormsg(_("Please select one or more bitmap image(s) for Pixel2SVG"))
+            inkex.errormsg(_("Please select one or more bitmap image(s)"))
             sys.exit(0)
         
 
