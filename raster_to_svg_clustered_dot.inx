@@ -3,7 +3,7 @@
   <_name>Clustered dot</_name>
   <id>Abhishek Sehgal_halftone</id>
 
-  <dependency type="executable" location="extensions">test.py</dependency>
+  <dependency type="executable" location="extensions">raster_to_svg_clustered_dot.py</dependency>
   <dependency type="executable" location="extensions">simplestyle.py</dependency>
   <dependency type="executable" location="extensions">inkex.py</dependency>
   
@@ -18,7 +18,7 @@
   </effect>
 
   <script>
-    <command reldir="extensions" interpreter="python">test.py</command>
+    <command reldir="extensions" interpreter="python">raster_to_svg_clustered_dot.py</command>
   </script>
 
 </inkscape-extension>

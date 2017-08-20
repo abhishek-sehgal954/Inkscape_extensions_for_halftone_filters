@@ -240,6 +240,6 @@ class raster_to_svg_clustered_dot(inkex.Effect):
         
 
 
-if __name__ == '__main__':
+if __name__ =='__main__':
     e = raster_to_svg_clustered_dot()
     e.affect()
