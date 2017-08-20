@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <_name>Newsprint filter</_name>
+  <id>Abhishek Sehgal_halftone_newsprint</id>
+
+  <dependency type="executable" location="extensions">raster_to_svg_newsprint_filter.py</dependency>
+  <dependency type="executable" location="extensions">simplestyle.py</dependency>
+  <dependency type="executable" location="extensions">inkex.py</dependency>
+  
+  <page name="halftoning" _gui-text="halftone filters">
+  </page>
+  <effect>
+    <menu-tip>to generate vector halftone of bitmap image.</menu-tip>
+    <object-type>all</object-type>
+    <effects-menu>
+      <submenu _name="Raster to vector(SVG) Halftone"/>
+    </effects-menu>
+  </effect>
+
+  <script>
+    <command reldir="extensions" interpreter="python">raster_to_svg_newsprint_filter.py</command>
+  </script>
+
+</inkscape-extension>
