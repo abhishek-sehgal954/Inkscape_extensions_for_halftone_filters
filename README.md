@@ -28,6 +28,7 @@ Currently four extensions are added under Raster to Raster Halftone
 # Submenu: Raster to vector(SVG) halftone
 
 1. Clustered dot
+2. Newsprint filter
 
 More extensions will be added under submenu named Raster to SVG halftone and SVG to SVG halftone.
 
