@@ -23,7 +23,7 @@ Currently four extensions are added under Raster to Raster Halftone
 1. Patterning
 2. Ordered dithering
 3. Error Diffusion
-4. Newsprint filter.
+4. Newsprint filter
 
 # Submenu: Raster to vector(SVG) halftone
 
