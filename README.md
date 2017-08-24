@@ -29,8 +29,10 @@ Currently four extensions are added under Raster to Raster Halftone
 
 1. Clustered dot
 2. Newsprint filter
+3. Ordered dithering
+4. Error diffusion
 
-More extensions will be added under submenu named Raster to SVG halftone and SVG to SVG halftone.
+More extensions will be added under submenu named SVG to SVG halftone.
 
 File common.py is a utility file which provides helper functions for raster images. It was developed under the terms of the GNU General Public License by su_v <suv-sf@users.sf.net>. Original file and other very helpful raster extension for inkscape can be found here: https://gitlab.com/su-v/inx-modifyimage/blob/master/src/image_lib/common.py
 
