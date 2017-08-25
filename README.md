@@ -12,7 +12,7 @@ This repository includes Inkscape extensions for some halftone filters.
 
 How to run?
 
-1. Copy all the files under extension folder of inkscape. 
+1. Copy .inx and .py file of the extension you want to use and paste it under the extension folder of inkscape. (Make sure you have also pasted common.py if you are using any Raster to Raster extension.) 
 2. Open Inkscape
 3. Open an image and select it.
 4. Under Extensions menu, find desired submenu and select the desired algorithm.
