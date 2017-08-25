@@ -19,7 +19,6 @@ How to run?
 
 ## Submenu: Raster to Raster halftone 
 
-Currently four extensions are added under Raster to Raster Halftone
 1. Patterning
 2. Ordered dithering
 3. Error Diffusion
