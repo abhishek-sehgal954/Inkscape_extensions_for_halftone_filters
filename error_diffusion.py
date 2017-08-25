@@ -1,9 +1,10 @@
+
 import numpy 
 from PIL import Image, ImageDraw, ImageStat
 import inkex
 import simplestyle
 import os
-from image_lib import common
+import common
 
 
 def error_dispersion(image_index, size):
@@ -40,5 +41,3 @@ class error_diffusion(inkex.Effect):
 if __name__ == '__main__':
 	obj = error_diffusion()
 	obj.affect()
-
-			
