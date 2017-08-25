@@ -1,0 +1,14 @@
+<inkscape-extension>
+    <_name>Clustered dot</_name>
+    <id>vector to vector clustered dot</id>
+    <dependency type="executable" location="extensions">svg_to_svg_clustered_dot.py</dependency>
+    <effect needs-live-preview="false">
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu _name="SVG to SVG halftone" />
+        </effects-menu>
+    </effect>
+    <script>
+        <command reldir="extensions" interpreter="python">svg_to_svg_clustered_dot.py</command>
+    </script>
+</inkscape-extension>
