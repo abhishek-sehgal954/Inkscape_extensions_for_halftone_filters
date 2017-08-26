@@ -2,6 +2,8 @@
     <_name>Newsprint filter</_name>
     <id>vector to vector newsprint</id>
     <dependency type="executable" location="extensions">svg_to_svg_newsprint_filter.py</dependency>
+    <param name="inkscape_path" type="string" _gui-text="inkscape path" _gui-description="Full path to inkscape command line"></param>
+    <param name="temp_path" type="string" _gui-text="a temporary path to store raster image" _gui-description="path to store temporary image"></param>
     <effect needs-live-preview="false">
         <object-type>all</object-type>
         <effects-menu>

@@ -16,11 +16,14 @@ class newsprint_filter(inkex.Effect):
 		def __init__(self):
 				"""Init the effect library and get options from gui."""
 				inkex.Effect.__init__(self)
+				self.OptionParser.add_option("--inkscape_path",    action="store", type="string",  dest="inkscape_path",    default="",        help="")
+				self.OptionParser.add_option("--temp_path",    action="store", type="string",  dest="temp_path",    default="",        help="")
 
 		def effect(self):
-				outfile = "/home/cic/Desktop/temp.png"
+				outfile = self.options.temp_path
 				curfile = self.args[-1]
-				self.exportPage(curfile,outfile)
+				inkscape_path = self.options.inkscape_path
+				self.exportPage(curfile,outfile,inkscape_path)
 
 		def draw_rectangle(self,(x, y), (l,b), color, parent, id_):
 				
@@ -124,8 +127,8 @@ class newsprint_filter(inkex.Effect):
 
 		
 				
-		def exportPage(self, curfile, outfile):
-				command = "/usr/bin/inkscape %s --export-png %s" %(curfile,outfile)
+		def exportPage(self, curfile, outfile,inkscape_path):
+				command = "%s %s --export-png %s" %(inkscape_path,curfile,outfile)
 				p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				return_code = p.wait()
 				f = p.stdout

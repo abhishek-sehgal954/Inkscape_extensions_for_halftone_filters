@@ -3,6 +3,8 @@
     <id>vector to vector error diffusion</id>
     <dependency type="executable" location="extensions">svg_to_svg_error_diffusion.py</dependency>
     <param name="width" type="int"   min="50"    max="250"    _gui-text="width of the new halftone image">200</param>
+    <param name="inkscape_path" type="string" _gui-text="inkscape path" _gui-description="Full path to inkscape command line"></param>
+    <param name="temp_path" type="string" _gui-text="a temporary path to store raster image" _gui-description="path to store temporary image"></param>
     <effect needs-live-preview="false">
         <object-type>all</object-type>
         <effects-menu>

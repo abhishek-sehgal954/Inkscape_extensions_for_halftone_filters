@@ -22,9 +22,12 @@ class ordered_dithering(inkex.Effect):
                                      dest="width", default=200,
                                      help="this variable will be used to resize the original selected image to a width of whatever \
                                      you enter and height proportional to the new width, thus maintaining the aspect ratio")
+        self.OptionParser.add_option("--inkscape_path",    action="store", type="string",  dest="inkscape_path",    default="",        help="")
+        self.OptionParser.add_option("--temp_path",    action="store", type="string",  dest="temp_path",    default="",        help="")
+
 
     def effect(self):
-        outfile = "/home/cic/Desktop/temp.png"
+        outfile = self.options.temp_path
         curfile = self.args[-1]
         self.exportPage(curfile,outfile)
 
@@ -138,7 +141,7 @@ class ordered_dithering(inkex.Effect):
 
 
     def exportPage(self, curfile, outfile):
-        command = "/usr/bin/inkscape %s --export-png %s" %(curfile,outfile)
+        command = "%s %s --export-png %s" %(self.options.inkscape_path,curfile,outfile)
         p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         return_code = p.wait()
         f = p.stdout
