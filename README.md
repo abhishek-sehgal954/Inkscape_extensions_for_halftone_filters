@@ -80,6 +80,10 @@ How to run?
 
 File common.py is a utility file which provides helper functions for raster images. It was developed under the terms of the GNU General Public License by su_v <suv-sf@users.sf.net>. Original file and other very helpful raster extension for inkscape can be found here: https://gitlab.com/su-v/inx-modifyimage/blob/master/src/image_lib/common.py
 
+## License
+
+This work is licensed under the "GNU General Public License v2.0". Please see the file LICENSE in the source distribution for license terms.
+
 
 
 
