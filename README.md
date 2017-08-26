@@ -2,6 +2,8 @@
 
 ### Project Page: https://summerofcode.withgoogle.com/projects/#5156376543232000
 
+# SVG Digital Halftoning
+
 # Inkscape extensions for halftone filters
 
 Copyright (c) 2017 abhishek-sehgal954
