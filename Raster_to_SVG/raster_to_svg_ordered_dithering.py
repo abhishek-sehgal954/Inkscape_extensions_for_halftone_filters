@@ -27,9 +27,6 @@ except:
     sys.exit()
 
 
-
-
-
 class raster_to_svg_ordered_dithering(inkex.Effect):
     def __init__(self):
         inkex.Effect.__init__(self)
@@ -191,50 +188,25 @@ class raster_to_svg_ordered_dithering(inkex.Effect):
         image = image.convert('L')
 
         if image:
-            
-            #image = image.resize((200,200), Image.ANTIALIAS)
             basewidth = self.options.width
             wpercent = (basewidth/float(image.size[0]))
             hsize = int((float(image.size[1])*float(wpercent)))
             image = image.resize((basewidth,hsize), Image.ANTIALIAS)
             (width, height) = image.size
-            if (1):
-
-                
-                nodeParent = node.getparent()
-                nodeIndex = nodeParent.index(node)
-                pixel2svg_group = inkex.etree.Element(inkex.addNS('g', 'svg'))
-                pixel2svg_group.set('id', "%s_pixel2svg" % node.get('id'))
-                nodeParent.insert(nodeIndex+1, pixel2svg_group)
-
-                
-                
-                self.draw_rectangle((0,0),(basewidth,hsize),'white',pixel2svg_group,'id')
-                output = self.order_dither(image)
-                self.draw_svg(output,pixel2svg_group)
-
-
-                
-
-
-
-                
-                
-                
-
-                
-                nodeParent.remove(node)
-
-           
-
+            nodeParent = node.getparent()
+            nodeIndex = nodeParent.index(node)
+            pixel2svg_group = inkex.etree.Element(inkex.addNS('g', 'svg'))
+            pixel2svg_group.set('id', "%s_pixel2svg" % node.get('id'))
+            nodeParent.insert(nodeIndex+1, pixel2svg_group)
+            self.draw_rectangle((0,0),(basewidth,hsize),'white',pixel2svg_group,'id')
+            output = self.order_dither(image)
+            self.draw_svg(output,pixel2svg_group)
+            nodeParent.remove(node)
         else:
             inkex.errormsg(_("Bailing out: No supported image file or data found"))
             sys.exit(1)
 
     def effect(self):
-        
-        
-        
         found_image = False
         if (self.options.ids):
             for node in self.selected.itervalues():
