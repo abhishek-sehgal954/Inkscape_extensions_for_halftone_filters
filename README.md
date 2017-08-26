@@ -1,5 +1,7 @@
 # Google/PSU Summer of Code 2017 project:
 
+### Project Page: https://summerofcode.withgoogle.com/projects/#5156376543232000
+
 # Inkscape extensions for halftone filters
 
 Copyright (c) 2017 abhishek-sehgal954
