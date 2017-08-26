@@ -72,20 +72,13 @@ class clustered_dot(inkex.Effect):
         return Image.merge('CMYK', cmyk_im)
 
     def halftone(self,parent,im, cmyk, sample, scale,):
-        #inkex.errormsg(_("ykbh2"))
-
-
         dots = []
         angle = 0 
         count = 0
         cmyk = cmyk.split()
         for channel in cmyk:
             count=count+1
-
-        #channel = channel.rotate(angle, expand=1)
             size = channel.size[0]*scale, channel.size[1]*scale
-        #half_tone = Image.new('L', size)
-        #draw = ImageDraw.Draw(half_tone)
             for x in xrange(0, channel.size[0], sample):
                 for y in xrange(0, channel.size[1], sample):
                     box = channel.crop((x, y, x + sample, y + sample))
@@ -96,57 +89,35 @@ class clustered_dot(inkex.Effect):
                     box_edge = sample*diameter*scale
                     if(count==1):
                         self.draw_ellipse(((2*x_pos+box_edge)/2,(2*y_pos+box_edge)/2),(box_edge-5,box_edge-5),'cyan',parent,'id',0)
-                        #dwg.add(dwg.ellipse(((2*x_pos+box_edge)/2,(2*y_pos+box_edge)/2),(box_edge-5,box_edge-5),fill='cyan',style="mix-blend-mode: multiply;")) 
+               
                     elif(count==2):
                         self.draw_ellipse(((2*x_pos+box_edge)/2,(2*y_pos+box_edge)/2),(box_edge-5,box_edge-5),'magenta',parent,'id',1.5)
-                        #dwg.add(dwg.ellipse(((2*x_pos+box_edge)/2,(2*y_pos+box_edge)/2),(box_edge-5,box_edge-5),fill='magenta',style="mix-blend-mode: multiply;",transform = ("rotate(1.5)")))
+                  
                     elif(count==3):
                         self.draw_ellipse(((2*x_pos+box_edge)/2,(2*y_pos+box_edge)/2),(box_edge-5,box_edge-5),'yellow',parent,'id',3)
-                        #dwg.add(dwg.ellipse(((2*x_pos+box_edge)/2,(2*y_pos+box_edge)/2),(box_edge-5,box_edge-5),fill='yellow',style="mix-blend-mode: multiply;",transform = ("rotate(3)")))
+                  
                 
                 
     def clustered(self,node,image):
-       
-        
-
         if image:
-            
-
             (width, height) = image.size
-            if (1):
-
-                
-                nodeParent = node.getparent()
-                nodeIndex = nodeParent.index(node)
-                pixel2svg_group = inkex.etree.Element(inkex.addNS('g', 'svg'))
-                pixel2svg_group.set('id', "%s_pixel2svg" % node.get('id'))
-                nodeParent.insert(nodeIndex+1, pixel2svg_group)
-                nodeParent.remove(node)
-
-                
-                
-                self.draw_rectangle((0,0),(width,height),'white',pixel2svg_group,'id')
-                image = image.convert("RGBA") # Convert this to RGBA if possible
-
-                pixel_data = image.load()
-
-                if image.mode == "RGBA":
- 
-                    for y in xrange(image.size[1]): # For each row ...
-                        for x in xrange(image.size[0]): # Iterate through each column ...
-      # Check if it's opaque
+            nodeParent = node.getparent()
+            nodeIndex = nodeParent.index(node)
+            pixel2svg_group = inkex.etree.Element(inkex.addNS('g', 'svg'))
+            pixel2svg_group.set('id', "%s_pixel2svg" % node.get('id'))
+            nodeParent.insert(nodeIndex+1, pixel2svg_group)
+            nodeParent.remove(node)
+            self.draw_rectangle((0,0),(width,height),'white',pixel2svg_group,'id')
+            image = image.convert("RGBA") # Convert this to RGBA if possible
+            pixel_data = image.load()
+            if image.mode == "RGBA":
+                for y in xrange(image.size[1]): 
+                        for x in xrange(image.size[0]): 
                             if pixel_data[x, y][3] < 255:
-        # Replace the pixel data with the colour white
                                 pixel_data[x, y] = (255, 255, 255, 255)
-
-
-                image.thumbnail([image.size[0], image.size[1]], Image.ANTIALIAS)
-
-
-                cmyk = self.gcr(image,0)
-                self.halftone(pixel2svg_group,image,cmyk,10,1)
-
-
+            image.thumbnail([image.size[0], image.size[1]], Image.ANTIALIAS)
+            cmyk = self.gcr(image,0)
+            self.halftone(pixel2svg_group,image,cmyk,10,1)
         else:
             inkex.errormsg(_("Bailing out: No supported image file or data found"))
             sys.exit(1)
@@ -154,8 +125,6 @@ class clustered_dot(inkex.Effect):
     
         
     def exportPage(self, curfile, outfile):
-
-        
         command = "/usr/bin/inkscape %s --export-png %s" %(curfile,outfile)
         p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         return_code = p.wait()
@@ -169,7 +138,6 @@ class clustered_dot(inkex.Effect):
                 found_image = True
                 self.clustered(node,img)
          
-        
 def main():
     e = clustered_dot()
     e.affect()
