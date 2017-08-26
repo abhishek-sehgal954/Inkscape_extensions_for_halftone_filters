@@ -2,6 +2,8 @@
 
 # Inkscape extensions for halftone filters
 
+Copyright (c) 2017 abhishek-sehgal954
+
 Mentoring Organization: Portland State University
 
 Mentor: Bart Massey
