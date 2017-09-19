@@ -90,6 +90,11 @@ File common.py is a utility file which provides helper functions for raster imag
 
 This work is licensed under the "GNU General Public License v2.0". Please see the file LICENSE in the source distribution for license terms.
 
+## Work remaining
+1. Ask users to change dot size for halftone filter.
+2. Adding feature of allowing moving of particular monochrome screen.
+3. Add more filters (for ex. Benday dots)
+
 
 
 
